@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <style>
+      table { border: 1px solid black; border-collapse: collapse; }
+      table th, table td { border: 1px solid black; }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>내 기여</th>
+          <th>학교 점수</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="indivScore">{{indivScore}}</td>
+          <td id="univScore">{{univScore}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button id="btn">버튼</button>
+    <div>
+      {{userName}}님 안녕하세요. ({{univName}})
+    </div>
+    <div>
+      <ol id="ranking">
+      </ol>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/main.js"></script>
+  </body>
+</html>
