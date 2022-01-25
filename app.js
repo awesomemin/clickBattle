@@ -46,10 +46,6 @@ app.post('/login', async (req, res, next) => {
   res.send('ok');
 });
 
-app.get('/univ', (req, res, next) => {
-  res.render('select.html');
-});
-
 app.get('/main', async (req, res, next) => {
   try {
     const user = await User.findAll({
