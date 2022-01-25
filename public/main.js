@@ -15,12 +15,10 @@ setInterval(async () => {
   rankingData.data.sort((a, b) => {
     return b.point - a.point;
   })
-  for(let i = 0; i < rankingData.data.length; i++) {
-    const li = document.createElement('li');
-    li.innerText = rankingData.data[i].name + rankingData.data[i].point;
-    ranking.appendChild(li);
+  console.log(Array.prototype.slice.call(ranking.children));
+  for (let i = 0; i < Array.prototype.slice.call(ranking.children).length; i++) {
+    Array.prototype.slice.call(ranking.children)[i].innerText = rankingData.data[i].name + " " + rankingData.data[i].point;
   }
-  console.log(rankingData.data);
 }, 1000)
 
 function compare(a, b) {
