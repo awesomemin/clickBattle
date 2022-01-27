@@ -9,6 +9,7 @@
   "license": "MIT",
   "dependencies": {
     "cookie-parser": "^1.4.6",
+    "dotenv": "^14.3.2",
     "express": "^4.17.2",
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3",

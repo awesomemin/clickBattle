@@ -1,7 +1,9 @@
-{
+require('dotenv').config();
+
+module.exports = {
   "development": {
     "username": "root",
-    "password": "",
+    "password": process.env.DB_PASSWORD,
     "database": "dbcon",
     "host": "127.0.0.1",
     "dialect": "mysql"
