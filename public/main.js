@@ -7,8 +7,8 @@ const rankingTableBody = document.getElementById('rankingTableBody');
 btn.addEventListener('click', async () => {
   const res = await axios.post('/main');
   //console.dir(res.data);
-  indivScore.innerText = res.data.user[0].point;
-  univScore.innerText = res.data.univ[0].point;
+  indivScore.innerText = res.data.user[0].point + 1;
+  univScore.innerText = res.data.univ[0].point + 1;
 })
 
 async function getRanking() {
