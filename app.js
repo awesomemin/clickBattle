@@ -30,6 +30,15 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get('/', (req, res, next) => {
+  if (req.cookies.id) {
+    res.redirect('/main');
+  } else {
+    res.redirect('/login');
+  }
+  
+})
+
 app.get('/login', (req, res, next) => {
   res.render('login.html');
 });
