@@ -45,7 +45,7 @@ setInterval(() => {
   } else {
     updateUnivRanking();
   }
-}, 1000);
+}, 1500);
 
 window.onload = async () => {
   initializeRanking();
