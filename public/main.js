@@ -6,7 +6,6 @@ const rankingTableBody = document.getElementById('rankingTableBody');
 
 btn.addEventListener('click', async () => {
   const res = await axios.post('/main');
-  //console.dir(res.data);
   indivScore.innerText = res.data.user[0].point + 1;
   univScore.innerText = res.data.univ[0].point + 1;
 })
@@ -17,7 +16,6 @@ async function getRanking() {
     return b.point - a.point;
   })
   for (let i = 0; i < rankingData.data.length; i++) {
-    console.dir(Array.prototype.slice.call(rankingTableBody.children)[i]);
     Array.prototype.slice.call(rankingTableBody.children)[i].innerHTML = `<td>${i+1}</td><td>${rankingData.data[i].name}</td><td>${rankingData.data[i].point}</td>`
   }
 }

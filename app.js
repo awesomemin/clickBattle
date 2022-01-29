@@ -6,6 +6,8 @@ const cookieParser = require('cookie-parser');
 const nunjucks = require('nunjucks');
 const User = require('./models/user');
 const Univ = require('./models/univ');
+const helmet = require('helmet');
+const hpp = require('hpp');
 
 const app = express();
 app.set('port', process.env.PORT || 3001);
@@ -24,7 +26,13 @@ sequelize.sync({ force: false })
     console.error(err);
   });
 
-app.use(morgan('dev'));
+if (process.env.NODE_ENV === 'production') {
+  app.use(morgan('combined'));
+  app.use(helmet({ contentSecurityPolicy: false }));
+  app.use(hpp());
+} else {
+  app.use(morgan('dev'));
+}
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(express.json());
