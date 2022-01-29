@@ -26,11 +26,14 @@
       <div class="d-flex justify-content-center">
         <button id="btn" class="btn btn-primary btn-lg">+1</button>
       </div>
-      <div class="text-center m-3">
-        {{userName}}님 안녕하세요. ({{univName}})
+      <div class="text-center m-3 fs-5">
+        {{userName}}님 안녕하세요.<br>({{univName}})
+      </div>
+      <div id="info" class="text-center fs-6 m-1">
+        학교명을 클릭하면<br>교내 랭킹을 볼 수 있습니다.
       </div>
     </div>
-    <table class="table table-bordered" id="ranking">
+    <table class="table table-bordered" id="rankingTable">
       <thead>
           <th>순위</th>
           <th>학교</th>

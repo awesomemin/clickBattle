@@ -86,9 +86,22 @@ app.get('/main', async (req, res, next) => {
   }
 });
 
-app.get('/main.json', async (req, res, next) => {
+app.get('/main.univ', async (req, res, next) => {
   try {
     const data = await Univ.findAll();
+    res.json(data);
+  } catch (err) {
+    next(err);
+  }
+})
+
+app.get('/main.user', async (req, res, next) => {
+  try {
+    const data = await User.findAll({
+      where: {
+        univ: req.query.univ
+      }
+    })
     res.json(data);
   } catch (err) {
     next(err);
