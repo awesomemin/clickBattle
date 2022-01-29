@@ -39,28 +39,39 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res, next) => {
-  if (req.cookies.id) {
-    res.redirect('/main');
-  } else {
-    res.redirect('/login');
+  try{
+    if (req.cookies.id) {
+      res.redirect('/main');
+    } else {
+      res.redirect('/login');
+    }
+  } catch (err) {
+    next(err);
   }
-  
 })
 
 app.get('/login', (req, res, next) => {
-  res.render('login.html');
+  try {
+    res.render('login.html');
+  } catch (err) {
+    next(err);
+  }
 });
 
 app.post('/login', async (req, res, next) => {
-  console.log(req.body);
-  const user = await User.create({
-    name: req.body.name,
-    univ: req.body.univ,
-  });
-  res.cookie('id', user.dataValues.id, {
-    expires: new Date('2024-05-03'),
-  });
-  res.send('ok');
+  try {
+    console.log(req.body);
+    const user = await User.create({
+      name: req.body.name,
+      univ: req.body.univ,
+    });
+    res.cookie('id', user.dataValues.id, {
+      expires: new Date('2024-05-03'),
+    });
+    res.send('ok');
+  } catch (err) {
+    next(err);
+  }
 });
 
 app.get('/main', async (req, res, next) => {
