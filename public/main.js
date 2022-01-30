@@ -97,7 +97,7 @@ async function goToUnivRanking() {
   sessionStorage.removeItem('targetUniv');
   rankingMode = 0;
   ranking.children[0].children[0].children[1].innerText = "학교";
-  info.innerHTML = "학교명을 클릭하면<br>교내 랭킹을 볼 수 있습니다.";
+  info.innerHTML = "학교명을 클릭하면<br>교내 랭킹을 볼 수 있습니다.<br>불편을 드려 죄송합니다.";
   resetTableBody();
   initializeRanking();
 }
