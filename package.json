@@ -21,7 +21,8 @@
     "nunjucks": "^3.2.3",
     "pm2": "^5.1.2",
     "sequelize": "^6.12.5",
-    "sequelize-cli": "^6.3.0"
+    "sequelize-cli": "^6.3.0",
+    "winston": "^3.5.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
