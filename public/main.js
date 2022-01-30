@@ -23,6 +23,7 @@ setInterval( async () => {
   }
   clicksInSec = 0;
   const res = await axios.post('/main', data);
+  indivScore.innerText = res.data.user[0].point;
   univScore.innerText = res.data.univ[0].point;
 }, 1500);
 
