@@ -1,16 +1,30 @@
 const { createLogger, format, transports } = require('winston');
 
-const logger = createLogger({
+const userLogger = createLogger({
   level: 'info',
   format: format.json(),
   transports: [
-    new transports.File({ filename: 'combined.log' }),
-    new transports.File({ filename: 'error.log', level: 'error'}),
+    new transports.File({ filename: 'userReq.log' }),
   ],
 });
 
 if (process.env.NODE_ENV !== 'production') {
-  logger.add(new transports.Console({ format: format.simple() }));
+  userLogger.add(new transports.Console({ format: format.simple() }));
 }
 
-module.exports = logger;
+const univLogger = createLogger({
+  level: 'info',
+  format: format.json(),
+  transports: [
+    new transports.File({ filename: 'univScore.log' }),
+  ],
+});
+
+if (process.env.NODE_ENV !== 'production') {
+  univLogger.add(new transports.Console({ format: format.simple() }));
+}
+
+module.exports = {
+  "userLogger": userLogger,
+  "univLogger": univLogger
+};

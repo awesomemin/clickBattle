@@ -8,7 +8,7 @@ const User = require('./models/user');
 const Univ = require('./models/univ');
 const helmet = require('helmet');
 const hpp = require('hpp');
-const logger = require('./logger');
+const {userLogger, univLogger} = require('./logger');
 
 const app = express();
 app.set('port', process.env.PORT || 3001);
@@ -122,7 +122,12 @@ app.get('/main.user', async (req, res, next) => {
 
 app.post('/main', async (req, res, next) => {
   try {
-    logger.info(req);
+    const userLog = {
+      id: req.cookies.id,
+      point: req.body.point
+    }
+    userLogger.info(userLog);
+    //console.log("id:", req.cookies.id, ", point:", req.body.point);
     const user = await User.findAll({
       where: {
         id: req.cookies.id,
@@ -152,6 +157,7 @@ app.post('/main', async (req, res, next) => {
       user: user,
       univ: univ,
     };
+    univLogger.info(data.univ);
     res.json(data);
   } catch (err) {
     next(err);
