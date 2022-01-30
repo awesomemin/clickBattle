@@ -131,12 +131,12 @@ app.post('/main', async (req, res, next) => {
         name: user[0].dataValues.univ,
       }
     });
-    await User.update({ point: user[0].dataValues.point + 1 }, {
+    await User.update({ point: user[0].dataValues.point + req.body.point }, {
       where: {
         id: user[0].dataValues.id,
       }
     });
-    await Univ.update({ point: univ[0].dataValues.point + 1 }, {
+    await Univ.update({ point: univ[0].dataValues.point + req.body.point }, {
       where: {
         id: univ[0].dataValues.id,
       }

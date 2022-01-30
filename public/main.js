@@ -7,11 +7,24 @@ const info = document.getElementById('info');
 
 let rankingMode = 0; // 0 : 대학랭킹 , 1 : 개인랭킹
 
-btn.addEventListener('click', async () => {
-  const res = await axios.post('/main');
-  indivScore.innerText = res.data.user[0].point + 1;
-  univScore.innerText = res.data.univ[0].point + 1;
+let clicksInSec = 0;
+
+btn.addEventListener('click', () => {
+  //const res = await axios.post('/main');
+  //indivScore.innerText = res.data.user[0].point + 1;
+  //univScore.innerText = res.data.univ[0].point + 1;
+  clicksInSec++;
+  indivScore.innerText = parseInt(indivScore.innerText) + 1;
 })
+
+setInterval( async () => {
+  const data = {
+    point: clicksInSec
+  }
+  clicksInSec = 0;
+  const res = await axios.post('/main', data);
+  univScore.innerText = res.data.univ[0].point;
+}, 1500);
 
 async function updateUnivRanking() {
   const univRankingData = await axios.get('/main.univ');
