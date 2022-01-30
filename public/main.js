@@ -10,9 +10,6 @@ let rankingMode = 0; // 0 : 대학랭킹 , 1 : 개인랭킹
 let clicksInSec = 0;
 
 btn.addEventListener('click', () => {
-  //const res = await axios.post('/main');
-  //indivScore.innerText = res.data.user[0].point + 1;
-  //univScore.innerText = res.data.univ[0].point + 1;
   clicksInSec++;
   indivScore.innerText = parseInt(indivScore.innerText) + 1;
 })
@@ -97,7 +94,7 @@ async function goToUnivRanking() {
   sessionStorage.removeItem('targetUniv');
   rankingMode = 0;
   ranking.children[0].children[0].children[1].innerText = "학교";
-  info.innerHTML = "학교명을 클릭하면<br>교내 랭킹을 볼 수 있습니다.<br>불편을 드려 죄송합니다.";
+  info.innerHTML = "학교명을 클릭하면<br>교내 랭킹을 볼 수 있습니다.<br>매크로 사용시 점수 차감됨";
   resetTableBody();
   initializeRanking();
 }
