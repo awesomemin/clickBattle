@@ -131,6 +131,9 @@ app.post('/main', async (req, res, next) => {
         name: user[0].dataValues.univ,
       }
     });
+    if(req.body.point >= 25) {
+      req.body.point = 25;
+    }
     await User.update({ point: user[0].dataValues.point + req.body.point }, {
       where: {
         id: user[0].dataValues.id,
