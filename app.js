@@ -133,6 +133,8 @@ app.post('/main', async (req, res, next) => {
     });
     if(req.body.point >= 25) {
       req.body.point = 25;
+    } else if(req.body.point < 0) {
+      req.body.point = 0;
     }
     await User.update({ point: user[0].dataValues.point + req.body.point }, {
       where: {
