@@ -21,7 +21,7 @@ setInterval( async () => {
   clicksInSec = 0;
   const res = await axios.post('/main', data);
   univScore.innerText = res.data.univ[0].point;
-}, 1500);
+}, 1000);
 
 async function updateUnivRanking() {
   const univRankingData = await axios.get('/main.univ');
@@ -55,7 +55,7 @@ setInterval(() => {
   } else {
     updateUnivRanking();
   }
-}, 1500);
+}, 1000);
 
 window.onload = async () => {
   initializeRanking();
